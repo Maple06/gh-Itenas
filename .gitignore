@@ -1,0 +1,14 @@
+# Ignore all files with a .log extension
+*.log
+
+# Ignore a specific directory
+/build/
+
+# Ignore a specific file
+config.local.js
+
+# Ignore everything in the node_modules directory
+node_modules/
+
+# Ignore all .DS_Store files anywhere in the repository
+**/.DS_Store

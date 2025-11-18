@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Monitoring History</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 10px; border: 1px solid #ccc; }
+        th { background: #f5f5f5; }
+    </style>
+</head>
+<body>
+
+<h2>History Data</h2>
+
+<table id="historyTable">
+    <thead>
+        <tr>
+            <th>Timestamp</th>
+            <th>Temperature (°C)</th>
+            <th>Humidity (%)</th>
+            <th>Turbidity</th>
+            <th>Water Temp (°C)</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<script>
+async function loadHistory() {
+    const res = await fetch("http://localhost:3000/api/greenhouses/history?gh=1");
+    const json = await res.json();
+    console.log(json);
+
+    const table = document.querySelector("#historyTable tbody");
+
+    json.forEach(row => {
+        const tr = document.createElement("tr");
+
+        tr.innerHTML = `
+            <td>${new Date(row.created_at).toLocaleString()}</td>
+            <td>${row.dht_temp}</td>
+            <td>${row.dht_hum}</td>
+            <td>${row.turbidity}</td>
+            <td>${row.water_temp}</td>
+        `;
+
+        table.appendChild(tr);
+    });
+}
+
+loadHistory();
+</script>
+
+</body>
+</html>
