@@ -1,10 +1,10 @@
 // --- Configuration ---
 const API_BASE = window.location.origin;
 const MQTT_CONFIG = {
-    host: 'wss://3a9df20466a443be817a5a85f89c3e8a.s1.eu.hivemq.cloud:8884/mqtt', 
+    host: 'wss://xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.xx.xx.hivemq.cloud:8884/mqtt', 
     options: {
-        username: 'gh-itenas',
-        password: 'GH-itenas123'
+        username: 'USERNAME',
+        password: 'PASSWORD'
     },
     topic_pattern: 'greenhouses/+/heartbeat',
     timeout_ms: 5000
